@@ -14,6 +14,15 @@ class ItemsController < ApplicationController
   end
 
   def create
+    if !(Item.exists?(params[:id]))
+      item = Item.new(
+        name:        params[:name],
+        price:       params[:price],
+        description: params[:description])
+      render json: item.to_json
+    else
+      render json: { err_message: "Record already exists." }, status: 404
+    end
   end
 
   def update

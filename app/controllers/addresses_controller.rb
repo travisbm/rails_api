@@ -14,6 +14,17 @@ class AddressesController < ApplicationController
   end
 
   def create
+    if !(Address.exists?(params[:id]))
+      address = Address.new(
+        user_id:     params[:user_id],
+        street_name: params[:street_name],
+        city:        params[:city],
+        state:       params[:state],
+        zip:         params[:zip])
+      render json: address.to_json
+    else
+      render json: { err_message: "Record already exists." }, status: 404
+    end
   end
 
   def update
