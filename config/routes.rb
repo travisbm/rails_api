@@ -1,96 +1,38 @@
 Rails.application.routes.draw do
-  get 'items/index'
 
-  get 'items/show'
+  resources :users        #     users GET    /users(.:format)          users#index
+                          #           POST   /users(.:format)          users#create
+                          #  new_user GET    /users/new(.:format)      users#new
+                          # edit_user GET    /users/:id/edit(.:format) users#edit
+                          #      user GET    /users/:id(.:format)      users#show
+                          #           PATCH  /users/:id(.:format)      users#update
+                          #           PUT    /users/:id(.:format)      users#update
+                          #           DELETE /users/:id(.:format)      users#destroy
 
-  get 'items/create'
+  resources :addresses    #   addresses GET    /addresses(.:format)          addresses#index
+                          #              POST   /addresses(.:format)          addresses#create
+                          #  new_address GET    /addresses/new(.:format)      addresses#new
+                          # edit_address GET    /addresses/:id/edit(.:format) addresses#edit
+                          #      address GET    /addresses/:id(.:format)      addresses#show
+                          #              PATCH  /addresses/:id(.:format)      addresses#update
+                          #              PUT    /addresses/:id(.:format)      addresses#update
+                          #              DELETE /addresses/:id(.:format)      addresses#destroy
 
-  get 'items/update'
+  resources :items        # items GET    /items(.:format)              items#index
+                          #              POST   /items(.:format)              items#create
+                          #     new_item GET    /items/new(.:format)          items#new
+                          #    edit_item GET    /items/:id/edit(.:format)     items#edit
+                          #         item GET    /items/:id(.:format)          items#show
+                          #              PATCH  /items/:id(.:format)          items#update
+                          #              PUT    /items/:id(.:format)          items#update
+                          #              DELETE /items/:id(.:format)          items#destroy
 
-  get 'items/destroy'
-
-  get 'addresses/index'
-
-  get 'addresses/show'
-
-  get 'addresses/create'
-
-  get 'addresses/update'
-
-  get 'addresses/destroy'
-
-  get 'orders/index'
-
-  get 'orders/show'
-
-  get 'orders/create'
-
-  get 'orders/update'
-
-  get 'orders/destroy'
-
-  get 'users/index'
-
-  get 'users/show'
-
-  get 'users/create'
-
-  get 'users/update'
-
-  get 'users/destroy'
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  resources :orders       # orders GET    /orders(.:format)             orders#index
+                          #              POST   /orders(.:format)             orders#create
+                          #    new_order GET    /orders/new(.:format)         orders#new
+                          #   edit_order GET    /orders/:id/edit(.:format)    orders#edit
+                          #        order GET    /orders/:id(.:format)         orders#show
+                          #              PATCH  /orders/:id(.:format)         orders#update
+                          #              PUT    /orders/:id(.:format)         orders#update
+                          #              DELETE /orders/:id(.:format)         orders#destroy
 end
