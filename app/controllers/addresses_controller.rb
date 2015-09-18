@@ -5,6 +5,12 @@ class AddressesController < ApplicationController
   end
 
   def show
+    if Address.exists?(params[:id])
+      address = Address.find(params[:id])
+      render json: address.to_json, status: 200
+    else
+      render json: { err_message: "Record not found." }, status: 404
+    end
   end
 
   def create
