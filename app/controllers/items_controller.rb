@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
 
   def create
     if !(Item.exists?(params[:id]))
-      item = Item.new(
+      item = Item.create(
         name:        params[:name],
         price:       params[:price],
         description: params[:description])

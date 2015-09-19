@@ -15,7 +15,7 @@ class AddressesController < ApplicationController
 
   def create
     if !(Address.exists?(params[:id]))
-      address = Address.new(
+      address = Address.create(
         user_id:     params[:user_id],
         street_name: params[:street_name],
         city:        params[:city],

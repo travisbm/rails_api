@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
 
   def create
     if !(Order.exists?(params[:id]))
-      order = Order.new(
+      order = Order.create(
         item_id:  params[:item_id],
         user_id:  params[:user_id],
         quantity: params[:quantity])
