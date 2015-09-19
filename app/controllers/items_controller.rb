@@ -26,6 +26,28 @@ class ItemsController < ApplicationController
   end
 
   def update
+    if Item.exists?(params[:id])
+      item = Item.find(params[:id])
+
+      if !params[:name].nil?
+        item.name = params[:name]
+        item.save
+      end
+
+      if !params[:price].nil?
+        item.price = params[:price]
+        item.save
+      end
+
+      if !params[:description].nil?
+        item.description = params[:description]
+        item.save
+      end
+
+      render json: item.to_json, status: 200
+    else
+      render json: { err_message: "Record not found." }, status: 404
+    end
   end
 
   def destroy

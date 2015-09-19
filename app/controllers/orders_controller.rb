@@ -26,6 +26,28 @@ class OrdersController < ApplicationController
   end
 
   def update
+    if Order.exists?(params[:id])
+      order = Order.find(params[:id])
+
+      if !params[:item_id].nil?
+        order.item_id = params[:item_id]
+        order.save
+      end
+
+      if !params[:user_id].nil?
+        order.user_id = params[:user_id]
+        order.save
+      end
+
+      if !params[:quantity].nil?
+        order.quantity = params[:quantity]
+        order.save
+      end
+
+      render json: order.to_json, status: 200
+    else
+      render json: { err_message: "Record not found." }, status: 404
+    end
   end
 
   def destroy
