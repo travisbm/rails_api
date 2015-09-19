@@ -58,5 +58,11 @@ class AddressesController < ApplicationController
   end
 
   def destroy
+    if User.exists?(params[:id])
+      Address.where("user_id = ?", params[:id]).first.destroy
+      render json: { message: "User deleted from database."}, status: 200
+    else
+      render json: { err_message: "Record not found." }, status: 404
+    end
   end
 end

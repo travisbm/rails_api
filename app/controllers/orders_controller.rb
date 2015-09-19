@@ -51,5 +51,11 @@ class OrdersController < ApplicationController
   end
 
   def destroy
+    if Order.exists?(params[:id])
+      Order.find(params[:id]).destroy
+      render json: { message: "User deleted from database."}, status: 200
+    else
+      render json: { err_message: "Record not found." }, status: 404
+    end
   end
 end
