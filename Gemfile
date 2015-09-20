@@ -45,5 +45,11 @@ group :development do
   gem 'spring'
   # Faker provides methods for populating databases
   gem 'faker'
+
+  gem 'rails_12factor', group: :production
+
+  ruby "2.2.1"
+
+  gem 'puma'
 end
 
